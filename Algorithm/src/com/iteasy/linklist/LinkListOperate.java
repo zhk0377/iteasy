@@ -32,4 +32,42 @@ public class LinkListOperate{
         fristNode.setNext(null);// 前一结点的指针域令为null;
         return reHead;// 反转后新链表的头结点
     }
+
+    /**
+     * 快慢指针获取中间结点
+     * @param fristNode
+     * @return
+     */
+    public  ListNode getMiddleNode(ListNode fristNode) {
+        if(fristNode==null || fristNode.getNext()==null){
+            return fristNode;
+        }
+        ListNode fastNode=fristNode;
+        ListNode slowNode=fristNode;
+        while (fastNode.getNext()!=null && fastNode.getNext().getNext()!=null){
+            fastNode=fastNode.getNext().getNext();
+            slowNode=slowNode.getNext();
+        }
+        return slowNode;
+    }
+
+    /**
+     * 判断是否是回文
+     * @param fristNode
+     * @return
+     */
+    public boolean isPalindrome(ListNode fristNode){
+        if(fristNode==null || fristNode.getNext()==null){
+            return false;
+        }
+        ListNode middleNode=getMiddleNode(fristNode);
+        middleNode.setNext(reverseListByLoop(middleNode.getNext()));
+
+        ListNode p=fristNode,q=middleNode.getNext();
+        while (p!=null && q!=null && p.getValue()==q.getValue()){
+            p=p.getNext();
+            q=q.getNext();
+        }
+        return  q==null;
+    }
 }
