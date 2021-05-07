@@ -9,8 +9,8 @@ import lombok.Data;
  * @date: 2021/5/7
  **/
 @Data
-public class Demo02Message {
-    public static final String TOPIC = "DEMO_03";
+public class Demo04Message {
+    public static final String TOPIC = "DEMO_04";
 
     /**
      * 编号
